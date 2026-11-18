@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootPane" prefHeight="1200.0" prefWidth="1920.0" style="-fx-background-color: black;" stylesheets="@gestion.css" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinemauq.cinemauq.viewController.VerCombosViewController">
+   <children>
+
+      <Button layoutX="86.0" layoutY="108.0" mnemonicParsing="false" onAction="#onVolver" styleClass="boton-volver" text="← Volver al inicio" />
+
+      <!-- Catálogo de combos SOLO PARA VER (se compran al generar la venta de las entradas) -->
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="86.0" layoutY="160.0" prefHeight="1010.0" prefWidth="1790.0" style="-fx-background: black; -fx-background-color: black;">
+         <content>
+            <VBox spacing="26.0">
+               <padding><Insets bottom="60.0" right="14.0" /></padding>
+               <children>
+                  <Label styleClass="titulo-grande" text="Combos y snacks" />
+                  <Label fx:id="lblDescuento" style="-fx-font-size: 19px;" styleClass="etiqueta" text="Descuento" wrapText="true" />
+
+                  <Label styleClass="titulo-panel" text="Para cualquier función" />
+                  <FlowPane fx:id="contenedorGenerales" hgap="30.0" prefWrapLength="1760.0" vgap="30.0" />
+
+                  <VBox fx:id="seccionBistro" spacing="22.0">
+                     <padding><Insets top="20.0" /></padding>
+                     <children>
+                        <Label styleClass="titulo-panel" text="Exclusivos VIP Bistró" />
+                        <Label styleClass="etiqueta" text="Se sirven a la silla, solo en las funciones VIP Bistró." />
+                        <FlowPane fx:id="contenedorBistro" hgap="30.0" prefWrapLength="1760.0" vgap="30.0" />
+                     </children>
+                  </VBox>
+
+                  <!-- Cierre: invitación a ver la cartelera -->
+                  <VBox alignment="CENTER" spacing="22.0">
+                     <padding><Insets bottom="20.0" top="50.0" /></padding>
+                     <children>
+                        <Label style="-fx-text-fill: white; -fx-font-size: 30px; -fx-font-weight: bold;" text="Uno de estos combos puede acompañarte en tu próxima experiencia en el cine." textAlignment="CENTER" wrapText="true" />
+                        <Button mnemonicParsing="false" onAction="#onVerCartelera" styleClass="boton-principal" style="-fx-font-size: 20px; -fx-padding: 14 40 14 40; -fx-background-radius: 40; -fx-pref-height: 60px;" text="Ver cartelera" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <!-- Barra superior del cliente con sus menús (la misma en todas las pantallas). Va al final para quedar encima -->
+      <fx:include source="BarraCliente.fxml" />
+   </children>
+</AnchorPane>

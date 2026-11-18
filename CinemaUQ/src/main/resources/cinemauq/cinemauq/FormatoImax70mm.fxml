@@ -18,26 +18,6 @@
      La parte derecha (películas y funciones en este formato) la llena el programa. -->
 <AnchorPane fx:id="rootPane" prefHeight="1200.0" prefWidth="1920.0" style="-fx-background-color: black;" stylesheets="@gestion.css" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinemauq.cinemauq.viewController.DetalleFormatoViewController">
    <children>
-      <!-- Barra superior -->
-      <Pane layoutX="86.0" layoutY="37.0" prefHeight="59.0" prefWidth="1776.0" style="-fx-background-color: #111111; -fx-background-radius: 54;">
-         <children>
-            <Button layoutX="6.0" layoutY="9.0" mnemonicParsing="false" onAction="#onAtras" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 22px; -fx-cursor: hand;" text="←" />
-            <Text fill="WHITE" layoutX="56.0" layoutY="35.0" text="CinemaUQ®">
-               <font><Font name="SansSerif Bold" size="18.0" /></font>
-            </Text>
-            <Button layoutX="407.0" layoutY="9.0" mnemonicParsing="false" onAction="#onDolby" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 21px; -fx-cursor: hand;" text="dolby ◗◖" />
-            <Button layoutX="770.0" layoutY="9.0" mnemonicParsing="false" onAction="#onHome" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 18px; -fx-cursor: hand;" text="Home" />
-            <Button layoutX="925.0" layoutY="9.0" mnemonicParsing="false" onAction="#onMasFormatos" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 18px; -fx-cursor: hand;" text="Más formatos" />
-            <Button layoutX="1129.0" layoutY="9.0" mnemonicParsing="false" onAction="#onImax" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 18px; -fx-cursor: hand;" text="IMAX" />
-            <Pane layoutX="1430.0" prefHeight="59.0" prefWidth="346.0" style="-fx-background-color: #b81414; -fx-background-radius: 54;">
-               <children>
-                  <Text fill="WHITE" layoutX="85.0" layoutY="36.0" text="Información del formato">
-                     <font><Font name="SansSerif Bold" size="18.0" /></font>
-                  </Text>
-               </children>
-            </Pane>
-         </children>
-      </Pane>
 
       <Button layoutX="86.0" layoutY="108.0" mnemonicParsing="false" onAction="#onVolver" styleClass="boton-volver" text="← Volver" />
 
@@ -87,5 +67,7 @@
             </VBox>
          </children>
       </HBox>
+      <!-- Barra superior del cliente con sus menús (la misma en todas las pantallas). Va al final para quedar encima -->
+      <fx:include source="BarraCliente.fxml" />
    </children>
 </AnchorPane>

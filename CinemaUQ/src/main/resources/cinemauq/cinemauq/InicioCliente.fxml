@@ -11,32 +11,9 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="rootPane" prefHeight="1200.0" prefWidth="1920.0" styleClass="root-inicio" stylesheets="@inicio.css" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinemauq.cinemauq.viewController.InicioClienteViewController">
    <children>
-      <!-- Barra superior (igual a la de las demás pantallas + Mis entradas y Cerrar sesión) -->
-      <Pane layoutX="86.0" layoutY="37.0" prefHeight="59.0" prefWidth="1776.0" style="-fx-background-color: #111111; -fx-background-radius: 54;">
-         <children>
-            <Button layoutX="6.0" layoutY="9.0" mnemonicParsing="false" onAction="#onAtras" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 22px; -fx-cursor: hand;" text="←" />
-            <Text fill="WHITE" layoutX="56.0" layoutY="35.0" text="CinemaUQ®">
-               <font><Font name="SansSerif Bold" size="18.0" /></font>
-            </Text>
-            <Button layoutX="407.0" layoutY="9.0" mnemonicParsing="false" onAction="#onDolby" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 21px; -fx-cursor: hand;" text="dolby ◗◖" />
-            <Button layoutX="770.0" layoutY="9.0" mnemonicParsing="false" onAction="#onHome" prefHeight="40.0" styleClass="boton-barra" text="Home" />
-            <Button layoutX="925.0" layoutY="9.0" mnemonicParsing="false" onAction="#onMasFormatos" prefHeight="40.0" styleClass="boton-barra" text="Más formatos" />
-            <Button layoutX="1129.0" layoutY="9.0" mnemonicParsing="false" onAction="#onImax" prefHeight="40.0" styleClass="boton-barra" text="IMAX" />
-            <Button layoutX="1225.0" layoutY="9.0" mnemonicParsing="false" onAction="#onMisEntradas" prefHeight="40.0" styleClass="boton-barra" text="Mis entradas" />
-            <Button layoutX="1375.0" layoutY="10.0" mnemonicParsing="false" onAction="#onCerrarSesion" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px; -fx-cursor: hand;" text="Cerrar sesión" />
-            <Pane layoutX="1530.0" prefHeight="59.0" prefWidth="246.0" style="-fx-background-color: #b81414; -fx-background-radius: 54;">
-               <children>
-                  <Label fx:id="lblSaludo" alignment="CENTER" layoutY="14.0" prefWidth="246.0" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 18px;" text="Hola" />
-               </children>
-            </Pane>
-         </children>
-      </Pane>
-
       <!-- Todo lo de abajo se desplaza con la rueda del mouse -->
       <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutY="110.0" prefHeight="1090.0" prefWidth="1920.0" styleClass="scroll-inicio">
          <content>
@@ -76,9 +53,9 @@
 
                   <!-- 2. Carrusel de películas: pegado al banner, todo el ancho, con la carátula del centro
                           difuminada de fondo. El título va dentro, sobre el difuminado. -->
-                  <StackPane fx:id="carruselPane" minHeight="960.0" prefHeight="960.0" style="-fx-background-color: #111111;">
+                  <StackPane fx:id="carruselPane" minHeight="1060.0" prefHeight="1060.0" style="-fx-background-color: #111111;">
                      <children>
-                        <ImageView fx:id="imgFondoCarrusel" fitHeight="960.0" fitWidth="1906.0" opacity="0.75" preserveRatio="true" />
+                        <ImageView fx:id="imgFondoCarrusel" fitHeight="1060.0" fitWidth="1906.0" opacity="0.75" preserveRatio="true" />
                         <Region mouseTransparent="true" style="-fx-background-color: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 22%, rgba(0,0,0,0.25) 80%, rgba(0,0,0,0.7) 100%);" />
                         <VBox>
                            <children>
@@ -89,7 +66,7 @@
                                     <Region maxHeight="2.0" minHeight="2.0" style="-fx-background-color: rgba(255,255,255,0.45);" />
                                  </children>
                               </VBox>
-                              <Pane fx:id="ventanaPeliculas" minHeight="780.0" prefHeight="780.0">
+                              <Pane fx:id="ventanaPeliculas" minHeight="880.0" prefHeight="880.0">
                                  <children>
                                     <Pane fx:id="filaPeliculas" layoutY="70.0" />
                                  </children>
@@ -167,5 +144,8 @@
             </VBox>
          </content>
       </ScrollPane>
+
+      <!-- Barra superior del cliente con sus menús (una sola para todas las pantallas). Va al final para quedar encima -->
+      <fx:include source="BarraCliente.fxml" />
    </children>
 </AnchorPane>

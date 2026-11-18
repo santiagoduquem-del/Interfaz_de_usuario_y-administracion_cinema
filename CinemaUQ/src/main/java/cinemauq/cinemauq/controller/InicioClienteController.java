@@ -25,15 +25,6 @@ public class InicioClienteController {
         cine = modelFactory.getCine();
     }
 
-    /** Primer nombre del cliente para el saludo ("Hola, Laura"). */
-    public String obtenerPrimerNombre() {
-        Cliente cliente = modelFactory.getClienteActual();
-        if (cliente == null) {
-            return "";
-        }
-        return cliente.getNombre().trim().split(" ")[0];
-    }
-
     /** Diapositivas del carrusel grande (las del administrador, o automáticas si no hay). */
     public List<DiapositivaInicio> obtenerDiapositivas() {
         return cine.obtenerDiapositivasInicio();

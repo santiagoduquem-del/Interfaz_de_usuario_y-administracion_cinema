@@ -52,14 +52,12 @@ import java.util.Map;
  */
 public class InicioClienteViewController extends BarraSuperiorViewController {
 
-    private static final double ANCHO_TARJETA = 300;
-    private static final double ALTO_POSTER = 450;
+    private static final double ANCHO_TARJETA = 340;
+    private static final double ALTO_POSTER = 510;
     private static final double ESPACIO_TARJETAS = 70;
     private static final double SEGUNDOS_CARRUSEL = 7;
 
     @FXML private AnchorPane rootPane;
-    @FXML private Label lblSaludo;
-
     // Carrusel grande
     @FXML private StackPane heroPane;
     @FXML private VBox heroTexto;
@@ -113,7 +111,6 @@ public class InicioClienteViewController extends BarraSuperiorViewController {
 
     @FXML
     public void initialize() {
-        lblSaludo.setText("Hola, " + inicioClienteController.obtenerPrimerNombre());
         diapositivas = inicioClienteController.obtenerDiapositivas();
         peliculasCarrusel = inicioClienteController.obtenerPeliculasCarrusel();
 
@@ -391,15 +388,28 @@ public class InicioClienteViewController extends BarraSuperiorViewController {
             fondos.put(pelicula, Imagenes.cargar(pelicula.getRutaCaratula(), 48, 0));
         }
 
+        // Orden de cada vuelta: la primera película (la destacada) va en el centro y la tarjeta
+        // "¿No encuentras lo que buscas?" va a MITAD de la vuelta, lo más lejos posible de ella.
+        // Ej. con 6 películas: P1 P2 P3 [¿No encuentras?] P4 P5 P6, y como es circular, a la izquierda de P1 queda P6.
+        int mitad = (peliculasCarrusel.size() + 1) / 2;
         int minimo = 9;   // con 9 tarjetas o más, el salto ocurre por fuera de la pantalla
         do {
-            agregarTarjeta(crearTarjetaVerTodas(), null);
-            for (Pelicula pelicula : peliculasCarrusel) {
+            for (int i = 0; i < peliculasCarrusel.size(); i++) {
+                if (i == mitad) {
+                    agregarTarjeta(crearTarjetaVerTodas(), null);
+                }
+                Pelicula pelicula = peliculasCarrusel.get(i);
                 agregarTarjeta(crearTarjetaPelicula(pelicula, tarjetas.size()), pelicula);
             }
+            if (mitad >= peliculasCarrusel.size()) {   // con 1 película, la tarjeta va después de ella
+                agregarTarjeta(crearTarjetaVerTodas(), null);
+            }
         } while (!peliculasCarrusel.isEmpty() && tarjetas.size() < minimo);
+        if (tarjetas.isEmpty()) {
+            agregarTarjeta(crearTarjetaVerTodas(), null);   // sin películas: solo la tarjeta de "Ver todas"
+        }
 
-        indiceCentro = peliculasCarrusel.isEmpty() ? 0 : 1;   // empieza con la primera película en el centro
+        indiceCentro = 0;   // empieza con la destacada (la primera película) en el centro
         // Cuando el panel ya tiene su ancho real, se ubican las tarjetas (sin animación)
         ventanaPeliculas.widthProperty().addListener((obs, anterior, nuevo) -> ubicarTarjetas(false));
         ubicarTarjetas(false);
@@ -568,11 +578,11 @@ public class InicioClienteViewController extends BarraSuperiorViewController {
         lblAvisoTexto.setText(aviso.getTexto());
 
         // La imagen (QR) se muestra completa; si no hay, su recuadro blanco no se muestra
-        Imagenes.mostrarSinRecortar(imgAvisoImagen, aviso.getRutaImagen());
+        imgAvisoImagen.setImage(Imagenes.cargar(aviso.getRutaImagen(), 312, 312));   // completa, sin recortar
         marcoAvisoImagen.setVisible(aviso.getRutaImagen() != null);
         marcoAvisoImagen.setManaged(aviso.getRutaImagen() != null);
 
-        Imagenes.mostrar(imgAvisoIcono, aviso.getRutaIcono());
+        Imagenes.mostrarCargada(imgAvisoIcono, Imagenes.cargar(aviso.getRutaIcono(), 152, 152));
         marcoAvisoIcono.setVisible(aviso.getRutaIcono() != null);
         marcoAvisoIcono.setManaged(aviso.getRutaIcono() != null);
         recortar(marcoAvisoIcono, 18);   // ícono con esquinas redondeadas, como el de una app
@@ -675,7 +685,7 @@ public class InicioClienteViewController extends BarraSuperiorViewController {
             foto.setFitWidth(900);
             foto.setFitHeight(560);
             foto.setPreserveRatio(true);
-            Imagenes.mostrar(foto, rutaImagen);
+            Imagenes.mostrarCargada(foto, Imagenes.cargar(rutaImagen, 1800, 1120));   // del doble, para que se vea nítida
             StackPane marcoFoto = new StackPane(foto);
             marcoFoto.setPrefSize(900, 560);
             marcoFoto.setMaxSize(900, 560);
@@ -800,6 +810,12 @@ public class InicioClienteViewController extends BarraSuperiorViewController {
     // =====================================================================
     // Ayudas
     // =====================================================================
+
+    /** Muestra u oculta un elemento; setManaged(false) hace que tampoco ocupe espacio. */
+    private void mostrarSiHay(Node elemento, boolean mostrar) {
+        elemento.setVisible(mostrar);
+        elemento.setManaged(mostrar);
+    }
 
     private void fijarAncho(Region region) {
         region.setMinWidth(ANCHO_TARJETA);

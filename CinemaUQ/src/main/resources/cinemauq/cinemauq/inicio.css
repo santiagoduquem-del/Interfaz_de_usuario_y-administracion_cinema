@@ -184,3 +184,68 @@
     -fx-text-fill: #e6e6e6;
     -fx-font-size: 21px;
 }
+
+/* Menú desplegable de Formatos (como el de AMC): rojo con un brillo más claro en el centro */
+.menu-desplegable {
+    /* Tres capas: un degradado rojo de oscuro a claro y de vuelta a oscuro,
+       un brillo suave arriba al centro y una sombra que oscurece la parte de abajo */
+    -fx-background-color:
+        linear-gradient(to right, #4f0a0a 0%, #861818 25%, #b02b2b 55%, #8a1a1a 80%, #4a0909 100%),
+        radial-gradient(center 55% 0%, radius 70%, rgba(255, 140, 140, 0.28), transparent),
+        linear-gradient(to bottom, transparent 55%, rgba(0, 0, 0, 0.35) 100%);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 30, 0, 0, 10);
+}
+.menu-cuenta {
+    -fx-background-radius: 0 0 18 18;
+}
+.menu-titulo {
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+.menu-enlace {
+    -fx-text-fill: white;
+    -fx-font-size: 19px;
+    -fx-cursor: hand;
+}
+.menu-enlace:hover {
+    -fx-underline: true;
+}
+.menu-cine {
+    -fx-text-fill: white;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+.menu-direccion {
+    -fx-text-fill: #f1dada;
+    -fx-font-size: 19px;
+}
+
+/* Colores de cada menú. Van DESPUÉS de .menu-desplegable para reemplazar su fondo rojo.
+   Películas: azul con turquesa */
+.menu-azul {
+    -fx-background-color:
+        linear-gradient(to right, #061a33 0%, #0b3c6e 28%, #0f6f8f 55%, #0b4a73 80%, #05162b 100%),
+        radial-gradient(center 55% 0%, radius 70%, rgba(80, 230, 220, 0.30), transparent),
+        linear-gradient(to bottom, transparent 55%, rgba(0, 0, 0, 0.35) 100%);
+}
+
+/* Cuenta (Hola, ...): morado */
+.menu-morado {
+    -fx-background-color:
+        linear-gradient(to bottom right, #2a0b4a 0%, #4b1a7d 40%, #7a2fa8 75%, #3a1063 100%),
+        radial-gradient(center 30% 0%, radius 80%, rgba(220, 150, 255, 0.28), transparent);
+}
+
+/* Combos: naranja (como las crispetas) */
+.menu-naranja {
+    -fx-background-color:
+        linear-gradient(to right, #3d1503 0%, #8a3608 28%, #c8640f 55%, #9a420a 80%, #3a1403 100%),
+        radial-gradient(center 55% 0%, radius 70%, rgba(255, 210, 120, 0.30), transparent),
+        linear-gradient(to bottom, transparent 55%, rgba(0, 0, 0, 0.35) 100%);
+}
+.menu-combo-nombre {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
