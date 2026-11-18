@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<!--
+   Horarios de proyección (estilo cartelera de cine):
+   película -> día -> formato e idioma -> botones con la hora.
+   Al hacer clic en una hora se abre Generar venta con esa función ya elegida.
+   Todo el contenido lo arma el programa dentro de "contenedorHorarios".
+-->
+<AnchorPane fx:id="rootPane" prefHeight="1200.0" prefWidth="1920.0" style="-fx-background-color: black;" stylesheets="@gestion.css" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinemauq.cinemauq.viewController.ConsultarFuncionesViewController">
+   <children>
+      <!-- Barra superior -->
+      <Pane layoutX="86.0" layoutY="37.0" prefHeight="59.0" prefWidth="1776.0" style="-fx-background-color: #111111; -fx-background-radius: 54;">
+         <children>
+            <Button layoutX="6.0" layoutY="9.0" mnemonicParsing="false" onAction="#onAtras" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 22px; -fx-cursor: hand;" text="←" />
+            <Text fill="WHITE" layoutX="56.0" layoutY="35.0" text="CinemaUQ®">
+               <font><Font name="SansSerif Bold" size="18.0" /></font>
+            </Text>
+            <Button layoutX="770.0" layoutY="9.0" mnemonicParsing="false" onAction="#onHome" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 18px; -fx-cursor: hand;" text="Home" />
+            <Button layoutX="407.0" layoutY="9.0" mnemonicParsing="false" onAction="#onDolby" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 21px; -fx-cursor: hand;" text="dolby ◗◖" />
+            <Button layoutX="925.0" layoutY="9.0" mnemonicParsing="false" onAction="#onMasFormatos" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 18px; -fx-cursor: hand;" text="Más formatos" />
+            <Button layoutX="1129.0" layoutY="9.0" mnemonicParsing="false" onAction="#onImax" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 18px; -fx-cursor: hand;" text="IMAX" />
+            <Pane layoutX="1430.0" prefHeight="59.0" prefWidth="346.0" style="-fx-background-color: #b81414; -fx-background-radius: 54;">
+               <children>
+                  <Text fill="WHITE" layoutX="130.0" layoutY="36.0" text="Horarios">
+                     <font><Font name="SansSerif Bold" size="18.0" /></font>
+                  </Text>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+
+      <Button layoutX="86.0" layoutY="108.0" mnemonicParsing="false" onAction="#onVolver" styleClass="boton-volver" text="← Volver" />
+
+      <Label fx:id="lblTitulo" layoutX="86.0" layoutY="150.0" styleClass="titulo-grande" text="Horarios de proyección" />
+      <Label fx:id="lblSubtitulo" layoutX="88.0" layoutY="212.0" style="-fx-font-size: 18px;" styleClass="etiqueta" text="Elija un horario para comprar sus entradas." />
+
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="86.0" layoutY="260.0" prefHeight="900.0" prefWidth="1776.0" style="-fx-background: black; -fx-background-color: black;">
+         <content>
+            <VBox fx:id="contenedorHorarios" spacing="40.0">
+               <padding><Insets bottom="30.0" right="20.0" top="10.0" /></padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

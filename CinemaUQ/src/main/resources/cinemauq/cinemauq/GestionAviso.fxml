@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- Ventana del administrador para el cuadro con QR del inicio del cliente -->
+<AnchorPane fx:id="rootPane" prefHeight="760.0" prefWidth="640.0" style="-fx-background-color: black;" stylesheets="@gestion.css" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinemauq.cinemauq.viewController.GestionAvisoViewController">
+   <children>
+      <VBox layoutX="20.0" layoutY="20.0" prefWidth="600.0" spacing="10.0" styleClass="panel">
+         <children>
+            <Label styleClass="titulo-panel" text="Cuadro de la aplicación" />
+            <Label styleClass="etiqueta" text="Sale en el inicio del cliente, entre el carrusel de películas y las secciones." wrapText="true" />
+            <CheckBox fx:id="chkMostrar" mnemonicParsing="false" style="-fx-text-fill: white; -fx-font-size: 15px;" text="Mostrar el cuadro en el inicio" />
+            <Label styleClass="etiqueta" text="Título" />
+            <TextField fx:id="txtTitulo" promptText="¡Ir al cine es más fácil con CinemaUQ!" styleClass="campo" />
+            <Label styleClass="etiqueta" text="Texto junto al ícono (puede tener varias líneas)" />
+            <TextArea fx:id="txtTexto" prefHeight="80.0" promptText="CinemaUQ: películas y más" wrapText="true" />
+            <HBox spacing="20.0">
+               <children>
+                  <VBox spacing="8.0">
+                     <children>
+                        <Label styleClass="etiqueta" text="Imagen (código QR)" />
+                        <StackPane prefHeight="180.0" prefWidth="180.0" style="-fx-background-color: white;">
+                           <children>
+                              <Label style="-fx-text-fill: #777777;" text="Sin imagen" />
+                              <ImageView fx:id="imgImagen" fitHeight="170.0" fitWidth="170.0" preserveRatio="true" />
+                           </children>
+                        </StackPane>
+                        <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#onSubirImagen" styleClass="boton-secundario" text="Subir imagen" />
+                        <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#onQuitarImagen" styleClass="boton-secundario" text="Quitar imagen" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="8.0">
+                     <children>
+                        <Label styleClass="etiqueta" text="Ícono (opcional)" />
+                        <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="90.0" prefWidth="90.0" styleClass="marco-imagen">
+                           <children>
+                              <Label styleClass="sin-imagen" text="Sin ícono" />
+                              <ImageView fx:id="imgIcono" fitHeight="90.0" fitWidth="90.0" preserveRatio="true" />
+                           </children>
+                        </StackPane>
+                        <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#onSubirIcono" styleClass="boton-secundario" text="Subir ícono" />
+                        <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#onQuitarIcono" styleClass="boton-secundario" text="Quitar ícono" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox spacing="12.0">
+               <padding><Insets top="10.0" /></padding>
+               <children>
+                  <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#onGuardar" styleClass="boton-principal" text="Guardar" HBox.hgrow="ALWAYS" />
+                  <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#cerrar" styleClass="boton-secundario" text="Cancelar" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

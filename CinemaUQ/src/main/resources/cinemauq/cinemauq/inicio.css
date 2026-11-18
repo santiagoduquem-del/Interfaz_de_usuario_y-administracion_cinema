@@ -1,0 +1,186 @@
+/* Estilos de la pantalla de inicio del cliente (estilo AMC) */
+
+.root-inicio {
+    -fx-background-color: black;
+    -fx-font-family: "SansSerif";
+}
+
+.scroll-inicio, .scroll-inicio > .viewport {
+    -fx-background: black;
+    -fx-background-color: black;
+}
+
+/* Textos */
+.titulo-hero {
+    -fx-text-fill: white;
+    -fx-font-size: 54px;
+    -fx-font-weight: bold;
+}
+.datos-hero {
+    -fx-text-fill: #d6d6d6;
+    -fx-font-size: 18px;
+}
+.sinopsis-hero {
+    -fx-text-fill: white;
+    -fx-font-size: 19px;
+}
+.titulo-seccion {
+    -fx-text-fill: white;
+    -fx-font-size: 34px;
+    -fx-font-weight: bold;
+}
+.titulo-tarjeta {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+.datos-tarjeta {
+    -fx-text-fill: #c9c9c9;
+    -fx-font-size: 16px;
+}
+.pregunta {
+    -fx-text-fill: white;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+.texto-promo {
+    -fx-text-fill: #d6d6d6;
+    -fx-font-size: 19px;
+}
+.pie {
+    -fx-text-fill: #8a8a8a;
+    -fx-font-size: 15px;
+}
+
+/* Botones */
+.boton-entradas {
+    -fx-background-color: #d32f2f;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 40;
+    -fx-padding: 12 30 12 30;
+    -fx-cursor: hand;
+}
+.boton-entradas:hover {
+    -fx-background-color: #ef3b3b;
+}
+.boton-contorno {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 40;
+    -fx-background-radius: 40;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 30 12 30;
+    -fx-cursor: hand;
+}
+.boton-contorno:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+}
+.flecha {
+    -fx-background-color: rgba(0, 0, 0, 0.75);
+    -fx-text-fill: white;
+    -fx-font-size: 30px;
+    -fx-background-radius: 10;
+    -fx-min-width: 64;
+    -fx-min-height: 64;
+    -fx-cursor: hand;
+}
+.flecha:hover {
+    -fx-background-color: rgba(40, 40, 40, 0.95);
+}
+
+/* Puntos del carrusel grande */
+.punto {
+    -fx-background-color: rgba(255, 255, 255, 0.45);
+    -fx-background-radius: 10;
+    -fx-min-width: 14;
+    -fx-min-height: 14;
+    -fx-pref-width: 14;
+    -fx-pref-height: 14;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+}
+.punto-activo {
+    -fx-background-color: white;
+    -fx-min-width: 34;
+    -fx-pref-width: 34;
+}
+
+/* Botones de la barra superior */
+.boton-barra {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-cursor: hand;
+}
+
+/* Zona de las secciones: difuminado FIJO (no depende de las fotos) que ocupa todo el ancho.
+   Son tres capas: un degradado de arriba a abajo y dos "manchas" de luz difusas encima. */
+.zona-secciones {
+    -fx-background-color:
+        linear-gradient(to bottom, #000000 0%, #0d1a22 12%, #16303b 40%, #1b3a44 65%, #0e1d24 88%, #000000 100%),
+        radial-gradient(center 6% 75%, radius 45%, rgba(110, 205, 185, 0.45), transparent),
+        radial-gradient(center 92% 25%, radius 40%, rgba(70, 130, 180, 0.35), transparent),
+        radial-gradient(center 55% 50%, radius 35%, rgba(40, 60, 90, 0.40), transparent);
+}
+.etiqueta-seccion {
+    -fx-text-fill: white;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+}
+
+/* Pie de página */
+.zona-pie {
+    -fx-background-color: #1a1a1a;
+}
+.titulo-pie {
+    -fx-text-fill: white;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 8 0;
+}
+.enlace-pie {
+    -fx-text-fill: #d6d6d6;
+    -fx-font-size: 18px;
+    -fx-cursor: hand;
+}
+.enlace-pie:hover {
+    -fx-text-fill: white;
+    -fx-underline: true;
+}
+.franja-final {
+    -fx-border-color: #333333 transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+.logo-pie {
+    -fx-text-fill: #d32f2f;
+    -fx-font-size: 34px;
+    -fx-font-weight: bold;
+}
+
+/* Título dentro del carrusel de películas (sobre el difuminado) */
+.titulo-carrusel {
+    -fx-text-fill: white;
+    -fx-font-size: 44px;
+    -fx-font-weight: bold;
+}
+
+/* Cuadro de la aplicación (QR) en la franja negra */
+.tarjeta-app {
+    -fx-background-color: #24292e;
+    -fx-padding: 20 30 20 20;
+}
+.titulo-app {
+    -fx-text-fill: white;
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+}
+.texto-app {
+    -fx-text-fill: #e6e6e6;
+    -fx-font-size: 21px;
+}

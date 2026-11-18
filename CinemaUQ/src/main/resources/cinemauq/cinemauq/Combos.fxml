@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+   Ventana de combos (se abre desde "Generar venta").
+   Las tarjetas las crea el programa con los combos HABILITADOS que registró el administrador
+   en Gestionar funciones -> Gestionar combos (nombre, contenido, precio y foto).
+-->
+<AnchorPane fx:id="rootPane" prefHeight="920.0" prefWidth="1500.0" style="-fx-background-color: black;" stylesheets="@gestion.css" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinemauq.cinemauq.viewController.CombosViewController">
+   <children>
+      <Label layoutX="37.0" layoutY="25.0" styleClass="titulo-panel" text="Elige los combos" />
+      <Label layoutX="37.0" layoutY="62.0" styleClass="etiqueta" text="Usa + y − para agregar o quitar unidades. Luego pulsa &quot;Listo&quot;." />
+
+      <ScrollPane fitToWidth="true" layoutX="37.0" layoutY="100.0" prefHeight="720.0" prefWidth="1440.0" style="-fx-background: black; -fx-background-color: black;">
+         <content>
+            <FlowPane fx:id="contenedorCombos" hgap="25.0" prefWrapLength="1400.0" vgap="25.0">
+               <padding><Insets bottom="10.0" /></padding>
+            </FlowPane>
+         </content>
+      </ScrollPane>
+
+      <HBox alignment="CENTER_LEFT" layoutX="37.0" layoutY="840.0" prefWidth="1425.0" spacing="20.0">
+         <children>
+            <VBox maxWidth="Infinity" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label fx:id="lblSubtotal" styleClass="dato" text="Subtotal combos: \$0" />
+                  <Label styleClass="etiqueta" text="El descuento del plan del cliente se aplica al registrar la venta." />
+               </children>
+            </VBox>
+            <Button mnemonicParsing="false" onAction="#onQuitarTodos" prefWidth="180.0" styleClass="boton-secundario" text="Quitar todos" />
+            <Button mnemonicParsing="false" onAction="#onListo" prefWidth="220.0" styleClass="boton-principal" text="Listo" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

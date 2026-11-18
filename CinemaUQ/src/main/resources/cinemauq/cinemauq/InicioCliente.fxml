@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootPane" prefHeight="1200.0" prefWidth="1920.0" styleClass="root-inicio" stylesheets="@inicio.css" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinemauq.cinemauq.viewController.InicioClienteViewController">
+   <children>
+      <!-- Barra superior (igual a la de las demás pantallas + Mis entradas y Cerrar sesión) -->
+      <Pane layoutX="86.0" layoutY="37.0" prefHeight="59.0" prefWidth="1776.0" style="-fx-background-color: #111111; -fx-background-radius: 54;">
+         <children>
+            <Button layoutX="6.0" layoutY="9.0" mnemonicParsing="false" onAction="#onAtras" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 22px; -fx-cursor: hand;" text="←" />
+            <Text fill="WHITE" layoutX="56.0" layoutY="35.0" text="CinemaUQ®">
+               <font><Font name="SansSerif Bold" size="18.0" /></font>
+            </Text>
+            <Button layoutX="407.0" layoutY="9.0" mnemonicParsing="false" onAction="#onDolby" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 21px; -fx-cursor: hand;" text="dolby ◗◖" />
+            <Button layoutX="770.0" layoutY="9.0" mnemonicParsing="false" onAction="#onHome" prefHeight="40.0" styleClass="boton-barra" text="Home" />
+            <Button layoutX="925.0" layoutY="9.0" mnemonicParsing="false" onAction="#onMasFormatos" prefHeight="40.0" styleClass="boton-barra" text="Más formatos" />
+            <Button layoutX="1129.0" layoutY="9.0" mnemonicParsing="false" onAction="#onImax" prefHeight="40.0" styleClass="boton-barra" text="IMAX" />
+            <Button layoutX="1225.0" layoutY="9.0" mnemonicParsing="false" onAction="#onMisEntradas" prefHeight="40.0" styleClass="boton-barra" text="Mis entradas" />
+            <Button layoutX="1375.0" layoutY="10.0" mnemonicParsing="false" onAction="#onCerrarSesion" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px; -fx-cursor: hand;" text="Cerrar sesión" />
+            <Pane layoutX="1530.0" prefHeight="59.0" prefWidth="246.0" style="-fx-background-color: #b81414; -fx-background-radius: 54;">
+               <children>
+                  <Label fx:id="lblSaludo" alignment="CENTER" layoutY="14.0" prefWidth="246.0" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 18px;" text="Hola" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+
+      <!-- Todo lo de abajo se desplaza con la rueda del mouse -->
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutY="110.0" prefHeight="1090.0" prefWidth="1920.0" styleClass="scroll-inicio">
+         <content>
+            <VBox>
+               <children>
+
+                  <!-- 1. Carrusel grande: ocupa todo el ancho (lo llena el programa con las diapositivas) -->
+                  <StackPane fx:id="heroPane" minHeight="600.0" prefHeight="600.0" style="-fx-background-color: black;">
+                     <children>
+                        <!-- Detrás del texto van dos "capas" (imagen + degradado) que crea el programa:
+                             la que se ve y la que entra corriendo desde un lado -->
+                        <VBox fx:id="heroTexto" maxHeight="-Infinity" maxWidth="900.0" spacing="18.0" StackPane.alignment="CENTER_LEFT">
+                           <padding><Insets left="172.0" /></padding>
+                           <children>
+                              <Label fx:id="lblHeroTitulo" styleClass="titulo-hero" text="Película" wrapText="true" />
+                              <Label fx:id="lblHeroDatos" styleClass="datos-hero" text="Género | duración | clasificación" />
+                              <Label fx:id="lblHeroSinopsis" styleClass="sinopsis-hero" text="Sinopsis" wrapText="true" />
+                              <HBox spacing="16.0">
+                                 <children>
+                                    <Button fx:id="btnHeroEntradas" mnemonicParsing="false" onAction="#onHeroEntradas" styleClass="boton-entradas" text="Obtener entradas" />
+                                    <Button fx:id="btnHeroDetalle" mnemonicParsing="false" onAction="#onHeroDetalle" styleClass="boton-contorno" text="Ver detalle" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Button mnemonicParsing="false" onAction="#onHeroAnterior" styleClass="flecha" text="‹" StackPane.alignment="CENTER_LEFT">
+                           <StackPane.margin><Insets left="30.0" /></StackPane.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#onHeroSiguiente" styleClass="flecha" text="›" StackPane.alignment="CENTER_RIGHT">
+                           <StackPane.margin><Insets right="30.0" /></StackPane.margin>
+                        </Button>
+                        <HBox fx:id="puntosHero" alignment="CENTER" maxHeight="-Infinity" spacing="10.0" StackPane.alignment="BOTTOM_CENTER">
+                           <StackPane.margin><Insets bottom="26.0" /></StackPane.margin>
+                        </HBox>
+                     </children>
+                  </StackPane>
+
+                  <!-- 2. Carrusel de películas: pegado al banner, todo el ancho, con la carátula del centro
+                          difuminada de fondo. El título va dentro, sobre el difuminado. -->
+                  <StackPane fx:id="carruselPane" minHeight="960.0" prefHeight="960.0" style="-fx-background-color: #111111;">
+                     <children>
+                        <ImageView fx:id="imgFondoCarrusel" fitHeight="960.0" fitWidth="1906.0" opacity="0.75" preserveRatio="true" />
+                        <Region mouseTransparent="true" style="-fx-background-color: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 22%, rgba(0,0,0,0.25) 80%, rgba(0,0,0,0.7) 100%);" />
+                        <VBox>
+                           <children>
+                              <VBox spacing="18.0">
+                                 <padding><Insets left="172.0" right="172.0" top="60.0" /></padding>
+                                 <children>
+                                    <Label styleClass="titulo-carrusel" text="Películas en cartelera" />
+                                    <Region maxHeight="2.0" minHeight="2.0" style="-fx-background-color: rgba(255,255,255,0.45);" />
+                                 </children>
+                              </VBox>
+                              <Pane fx:id="ventanaPeliculas" minHeight="780.0" prefHeight="780.0">
+                                 <children>
+                                    <Pane fx:id="filaPeliculas" layoutY="70.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </VBox>
+                        <Button mnemonicParsing="false" onAction="#onPeliculaAnterior" styleClass="flecha" text="‹" StackPane.alignment="CENTER_LEFT">
+                           <StackPane.margin><Insets top="40.0" /></StackPane.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#onPeliculaSiguiente" styleClass="flecha" text="›" StackPane.alignment="CENTER_RIGHT">
+                           <StackPane.margin><Insets top="40.0" /></StackPane.margin>
+                        </Button>
+                     </children>
+                  </StackPane>
+
+                  <!-- 2b. Franja negra con el cuadro de la aplicación (QR). Lo edita el administrador. -->
+                  <HBox fx:id="zonaAviso" alignment="CENTER" style="-fx-background-color: black;">
+                     <padding><Insets bottom="60.0" top="60.0" /></padding>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="24.0" styleClass="tarjeta-app">
+                           <children>
+                              <StackPane fx:id="marcoAvisoImagen" prefHeight="170.0" prefWidth="170.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <ImageView fx:id="imgAvisoImagen" fitHeight="156.0" fitWidth="156.0" preserveRatio="true" />
+                                 </children>
+                              </StackPane>
+                              <VBox spacing="22.0">
+                                 <children>
+                                    <Label fx:id="lblAvisoTitulo" styleClass="titulo-app" text="¡Ir al cine es más fácil con CinemaUQ!" />
+                                    <HBox alignment="CENTER_LEFT" spacing="14.0">
+                                       <children>
+                                          <StackPane fx:id="marcoAvisoIcono" prefHeight="76.0" prefWidth="76.0">
+                                             <children>
+                                                <ImageView fx:id="imgAvisoIcono" fitHeight="76.0" fitWidth="76.0" preserveRatio="true" />
+                                             </children>
+                                          </StackPane>
+                                          <Label fx:id="lblAvisoTexto" styleClass="texto-app" text="CinemaUQ: películas y más" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+
+                  <!-- 3. Secciones intercaladas (texto | foto, foto | texto) sobre un difuminado FIJO
+                       que ocupa todo el ancho y no cambia con las fotos (estilo zona-secciones en inicio.css) -->
+                  <VBox styleClass="zona-secciones">
+                     <padding><Insets bottom="120.0" left="72.0" right="60.0" top="100.0" /></padding>
+                     <children>
+                        <VBox fx:id="contenedorPromos" spacing="120.0" />
+                     </children>
+                  </VBox>
+
+                  <!-- 4. Pie de página: cuatro columnas de enlaces (las llena el programa) y la franja final -->
+                  <VBox styleClass="zona-pie">
+                     <children>
+                        <HBox fx:id="columnasPie" alignment="TOP_CENTER" spacing="40.0">
+                           <padding><Insets bottom="60.0" left="120.0" right="120.0" top="70.0" /></padding>
+                        </HBox>
+                        <HBox alignment="CENTER" styleClass="franja-final">
+                           <padding><Insets bottom="30.0" left="120.0" right="120.0" top="30.0" /></padding>
+                           <children>
+                              <Label styleClass="pie" text="© 2026 CinemaUQ · Armenia, Quindío" />
+                              <Region HBox.hgrow="ALWAYS" />
+                              <Label styleClass="logo-pie" text="CinemaUQ" />
+                              <Region HBox.hgrow="ALWAYS" />
+                              <Label styleClass="pie" text="Proyecto final · Programación I · Universidad del Quindío" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

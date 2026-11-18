@@ -1,0 +1,21 @@
+package cinemauq.cinemauq.controller;
+
+/**
+ * Controller del menú del administrador.
+ */
+public class MenuAdministradorController {
+
+    private final ModelFactoryController modelFactory;
+
+    public MenuAdministradorController() {
+        modelFactory = ModelFactoryController.getInstance();
+    }
+
+    public String obtenerNombreEmpleado() {
+        return modelFactory.getEmpleadoActual() == null ? "" : modelFactory.getEmpleadoActual().getNombre();
+    }
+
+    public void cerrarSesion() {
+        modelFactory.cerrarSesion();
+    }
+}
